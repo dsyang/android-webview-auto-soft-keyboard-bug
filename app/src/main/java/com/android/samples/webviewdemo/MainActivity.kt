@@ -51,12 +51,7 @@ class MainActivity : AppCompatActivity() {
 
             webView.requestFocus()
             webView.evaluateJavascript("""
-                console.log("onPageFinished")
-                setTimeout(() => {
-                  console.log("focusing to show keyboard")
-                  focusToShowSoftKeyboard()
-                }, 1000)
-                
+                onPageFinished()
             """.trimIndent(), null)
         }
     }
@@ -105,10 +100,10 @@ class MainActivity : AppCompatActivity() {
         // Enable Javascript
         binding.webview.settings.javaScriptEnabled = true
 
-        // Load the content
-        binding.webview.loadUrl("https://raw.githubusercontent.com/views-widgets-samples/assets/index.html")
+        binding.webview.loadUrl("data:text/html, <html/>")
         var reloadCounter = 0
         binding.reloadButton.setOnClickListener {
+            // Load the content
             binding.webview.loadUrl("https://raw.githubusercontent.com/views-widgets-samples/assets/index.html")
             binding.webview.requestFocus()
             reloadCounter++

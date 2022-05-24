@@ -22,3 +22,11 @@ function focusToShowSoftKeyboard() {
 	  focusMe: document.getElementById("focusme")
 	})
 }
+
+function onPageFinished() {
+    console.log("onPageFinished")
+    setTimeout(() => {
+      console.log("focusing to show keyboard")
+      focusToShowSoftKeyboard()
+    }, 1000)
+}
